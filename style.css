@@ -1,0 +1,89 @@
+ .principale{
+    display: flex;
+    height: auto;
+    margin-top: 70px;
+   border: 2px solid  black;
+    
+
+}
+
+
+.blague{
+    border: 2px solid black;
+    width: 40%;
+    height: auto;
+    margin-right: 30PX;
+    background-color: rgb(211, 208, 204);
+     
+}
+
+.pays{
+   border: 2px solid black;
+    width: 100%;
+    height: auto;
+    background-color: aliceblue;
+    
+}
+.row{
+     /* border: 2px solid black; */
+     margin-bottom: 10px;
+     border-radius: 10px;
+}
+
+.form-inline{
+    width: 500px;
+    margin-left: 200px;
+    padding: 10px;
+    text-align: center;
+}
+.drap{
+    margin: 0 ;
+    padding: 0 auto;
+    width: 18rem;
+    height: auto;
+}
+.form-control{
+    text-align: center;
+}
+.infop{
+    font-family: 'Petit Formal Script', cursive;
+    /* font-style: italic; */
+    
+    /* the Nautigal */
+}
+
+/*
+h2{
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Times New Roman', Times, serif;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: 10px;
+    font-style: oblique;
+}
+
+
+
+
+
+
+.card{
+    background: url(images/picture-image_265098.jpg)   ;
+    color: white;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: oblique;
+}
+
+h4 , h3{
+    background-color: aqua;
+    font-weight: bolder;
+}
+p{
+    font-size: large;
+}
+
+.pays{
+    background-color: darkblue;
+} */
