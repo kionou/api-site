@@ -1,7 +1,7 @@
 let resulblague = document.querySelector('.affblague')
 let pays = document.querySelector('.affpays')
 let input = document.querySelector('form')
-let chercher =' ';
+
 console.log(input);
 
 function afficheblague() {
@@ -18,7 +18,7 @@ fetch ( `https://api.blablagues.net/?rub=blagues` )
             <h4 class="card-subtitle mb-2 text-muted">${blagues.categorie}</h4>
             <p class="card-text"> ${blagues.content.text_head} </p>
             <p class="card-text">  ${blagues.content.text_hidden || blagues.content.text  } </p> <br>
-             <input class="btn btn-primary" type = "reset" onclick =" afficheblague( 'blagues' ) "   value="Reset">
+            <input class="btn btn-primary " type = "reset" onclick =" afficheblague( 'blagues' ) "   value="Reset">
         </div>
 </div>
         ` ;
@@ -30,21 +30,24 @@ afficheblague();
 
 
 
-const  recherche = async() => {
-    afrique = await fetch(`https://restcountries.com/v3.1/region/Africa `)
-    .then(res => res.json()) 
-    console.log(afrique[0]);
-    return afrique;
-}
 
 
-async function affiche() {
-    results = await recherche();
+
+
+    fetch(`https://restcountries.com/v3.1/all `)
+    .then(res => res.json())
+    .then( monde => {
+      // console.log(afrique);
+      affiche(monde)
+
+    }) 
+    
+ function affiche(monde) {
+   results = monde
     console.log(results);
     for (let i = 0; i < results.length; i++) {
         const element = results[i];
         pays.innerHTML +=`
-
 <div class="row">
   <div class="col-sm-6">
     <div class="drap"  >
@@ -55,29 +58,65 @@ async function affiche() {
     <div class="card">
       <div class="card-body infop">
         <h3 class="card-title">Pays: ${results[i].name.common}</h3>
-        <h5 class="card-text">capitale: ${ results[i].capital }</h5>
+        <h5 class="card-text">capitale: ${ results[i].capital  || ''}</h5>
         <h5>Superficie: ${nombreespace( results[i].area)} km²</h5>
-        <h5>Momaie: ${ results[i].currencies}</h5>
-        
+        <h5>Polulation: ${ nombreespace(results[i].population) }</h5>
+      
       </div>
+      <button id="plus" class="btn btn-outline-info ">Info</button>
     </div>
   </div>
 </div>    
         `
         
-    }
+      }
+      if(document.querySelector('#plus')) {
+        plusinfo();
+      }
     
 }
-affiche();
 
-
+let chercher =' ';
 input.addEventListener('input' ,(e)  => {
 e.preventDefault();
  chercher = e.target.value
  console.log(chercher);
-affiche();
+
+ fetch(`https://restcountries.com/v3.1/name/${chercher} `)
+    .then(res => res.json())
+    .then( monde => {
+      // console.log(afrique);
+      pays.innerHTML = '';
+      affiche(monde)
+
+    }) 
+
 
 });
+
+
+function plusinfo() {
+  let info = document.querySelector('#plus')
+
+  info.addEventListener('click', (e) =>{
+    e.preventDefault();
+    console.log(e.target.classList);
+    let reponse = e.target.parentElement.parentElement;
+    // pays.innerHTML = '';
+    // pays.innerHTML = `
+    //       <div class="rep"> 
+    //         ${reponse}
+    //       </div>
+
+    // `
+
+    console.log(e.target.parentElement.parentElement);
+    
+  })
+  
+}
+
+
 
 function nombreespace(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');

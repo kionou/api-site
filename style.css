@@ -52,6 +52,13 @@
     /* the Nautigal */
 }
 
+.detail{
+    margin: 0 auto;
+    padding: 0;
+    height: 300px;
+    width: 200px;
+}
+
 /*
 h2{
     text-align: center;
